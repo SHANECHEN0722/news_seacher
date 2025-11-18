@@ -43,6 +43,12 @@ reports/
 
 # macOS
 .DS_Store
+._*
 
 # Jupyter Notebook
 .ipynb_checkpoints/
+
+# Selenium
+/tmp/debug_page.html
+chromedriver
+geckodriver

@@ -64,7 +64,7 @@ class NewsSearcher:
             
             # Google 搜索 URL
             search_query = f"{keyword} 新闻"
-            search_url = f"https://www.google.com/search?q={requests.utils.quote(search_query)}&num={max_results}&hl=zh-CN"
+            search_url = f"https://www.google.com.hk/search?q={requests.utils.quote(search_query)}&num={max_results}&hl=zh-CN"
             
             # 模拟浏览器请求头（包含 Cookie）
             headers = {
@@ -212,14 +212,26 @@ class NewsSearcher:
         all_links = []
         seen_urls = set()  # 用于去重
         
+        # 难以爬取的网站黑名单
+        blocked_domains = [
+            'zhihu.com', 'weibo.com', 'twitter.com', 'facebook.com',
+            'instagram.com', 'youtube.com', 'bilibili.com', 'douyin.com'
+        ]
+        
+        def is_valid_url(url):
+            """检查URL是否有效（不在黑名单中）"""
+            return not any(domain in url for domain in blocked_domains)
+        
         def add_unique_links(new_links):
             """添加链接并去重"""
             added = 0
             for url in new_links:
-                if url not in seen_urls and len(all_links) < max_results:
+                if url not in seen_urls and len(all_links) < max_results and is_valid_url(url):
                     all_links.append(url)
                     seen_urls.add(url)
                     added += 1
+                elif not is_valid_url(url):
+                    print(f"   ⚠️ 过滤黑名单网站: {url[:50]}...")
             return added
         
         # 1. 如果配置了 Google Cookie，优先使用 Google

@@ -33,10 +33,15 @@ class AnalysisWorker(QThread):
             
             # 2. Crawl articles
             self.log_signal.emit("📄 Crawling articles...")
-            articles = NewsCrawler.crawl_articles(links)
+            self.log_signal.emit(f"   Links to crawl: {len(links)}")
+            for i, link in enumerate(links, 1):
+                self.log_signal.emit(f"   [{i}] {link}")
+            
+            # 尝试使用动态爬虫（如果静态爬虫失败）
+            articles = NewsCrawler.crawl_articles(links, use_dynamic=True)
             
             if not articles:
-                self.fail_signal.emit("Failed to crawl articles")
+                self.fail_signal.emit(f"Failed to crawl articles. All {len(links)} links failed. Check if they are blocked domains or have anti-crawling protection.")
                 return
             
             self.log_signal.emit(f"✅ Crawled {len(articles)} articles")

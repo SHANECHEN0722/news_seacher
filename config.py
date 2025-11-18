@@ -28,7 +28,7 @@ SEARCH_HEADERS = {
 
 # Google 搜索配置（可选）
 # 如果需要使用 Google 搜索，请在 .env 文件中添加 GOOGLE_COOKIE
-GOOGLE_COOKIE = os.getenv("GOOGLE_COOKIE", "")
+GOOGLE_COOKIE = os.getenv("GOOGLE_COOKIE", "").strip().replace('\n', '').replace('\r', '')
 
 # 去重配置
 SIMILARITY_THRESHOLD = 85  # 文章标题相似度阈值

@@ -7,11 +7,12 @@ An intelligent news aggregation and analysis tool powered by DeepSeek-V3, implem
 ## Features
 
 - 🔍 **Multi-Source Search**: Supports Google + Baidu News + Bing triple-engine intelligent search (Google Cookie configurable)
-- 📄 **Smart Crawling**: Automatically extracts article content using Newspaper3k
-- 🧹 **Fuzzy Deduplication**: Intelligent title deduplication based on FuzzyWuzzy
+- 📄 **Smart Crawling**: Dual-mode crawling with static (Newspaper3k) and dynamic (Selenium) crawlers
+- 🧹 **Fuzzy Deduplication**: Intelligent title deduplication based on FuzzyWuzzy (85% threshold)
 - 🤖 **AI Analysis**: DeepSeek-V3 powered Map-Reduce summarization
 - 📊 **Visual Reports**: Generates beautiful dark-themed HTML reports
 - 🖥️ **GUI Interface**: User-friendly interface based on PyQt6
+- 🚀 **Auto Fallback**: Automatically switches to dynamic crawler when static crawler fails
 
 ## Project Structure
 
@@ -138,8 +139,8 @@ Example: `CHINA_20251118_211030.html`
 
 - **AI Model**: DeepSeek-V3
 - **GUI Framework**: PyQt6
-- **Crawler Libraries**: Newspaper3k, BeautifulSoup4
-- **Search Engines**: Baidu News, Google Search, Bing Search
+- **Crawler Libraries**: Newspaper3k (Static), Selenium (Dynamic), BeautifulSoup4
+- **Search Engines**: Google Search, Baidu News, Bing Search
 - **Deduplication Algorithm**: FuzzyWuzzy (Levenshtein Distance)
 - **Architecture Pattern**: Map-Reduce
 
