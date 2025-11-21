@@ -11,14 +11,14 @@ class NewsCrawler:
     
     # 难以爬取的网站黑名单
     BLOCKED_DOMAINS = [
-        'zhihu.com',
-        'weibo.com',
-        'twitter.com',
-        'facebook.com',
-        'instagram.com',
-        'youtube.com',
-        'bilibili.com',
-        'douyin.com'
+        # 'zhihu.com',
+        # 'weibo.com',
+        # 'twitter.com',
+        # 'facebook.com',
+        # 'instagram.com',
+        # 'youtube.com',
+        # 'bilibili.com',
+        # 'douyin.com'
     ]
     
     @classmethod
@@ -36,7 +36,7 @@ class NewsCrawler:
         
         try:
             print(f" [→] 正在爬取: {url}")
-            article = Article(url, language='zh')
+            article = Article(url)  # 不指定语言，让 newspaper 自动检测
             article.download()
             article.parse()
             

@@ -21,7 +21,7 @@ class NewsAnalyzerWindow(QMainWindow):
     
     def init_ui(self):
         """Initialize UI"""
-        self.setWindowTitle("AI News Event Analysis System")
+        self.setWindowTitle("Omnisight")
         self.setFixedSize(600, 550)
         
         central_widget = QWidget()
@@ -31,7 +31,7 @@ class NewsAnalyzerWindow(QMainWindow):
         main_layout.setContentsMargins(30, 30, 30, 30)
         
         # Title
-        title_label = QLabel("🤖 AI News Event Analysis System")
+        title_label = QLabel("🤖 Omnisight")
         title_label.setStyleSheet("font-size: 22px; font-weight: bold; color: #1e3a8a; margin-bottom: 5px;")
         title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(title_label)
